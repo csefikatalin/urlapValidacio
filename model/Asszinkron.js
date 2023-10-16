@@ -3,7 +3,7 @@ class Asszinkron {
     constructor() {}
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     getData(url, callback) {
-        async function getData(url = "", data = {}) {
+        async function getData(url = "") {
             // Default options are marked with *
             const response = await fetch(url, {
                 method: "GET", // *GET, POST, PUT, DELETE, etc.
