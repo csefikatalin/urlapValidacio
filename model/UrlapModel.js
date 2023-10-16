@@ -1,23 +1,18 @@
-import { adat, tipus, kulcs } from "./adatok.js";
+import { adat, adatLeiras } from "./adatok.js";
 
 class UrlapModel {
     #adat = [];
-    #tipus = {};
-    #kulcs = {};
+    #adatLeiras = {};
+
     constructor() {
         this.#adat = adat;
-        this.#tipus = tipus;
-        this.#kulcs = kulcs;
+        this.#adatLeiras = adatLeiras;
     }
     get adat() {
         return this.#adat;
     }
-    get tipus() {
-        return this.#tipus;
-    }
-
-    get kulcs() {
-        return this.#kulcs;
+    get adatLeiras() {
+        return this.#adatLeiras;
     }
 }
 export default UrlapModel;

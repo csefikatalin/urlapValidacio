@@ -4,5 +4,6 @@
         { "nev": "József Attila", "szul": 1905 }
     ],
     "tipus": { "nev": "text", "szul": "int" },
-    "kulcs": { "nev": "Név", "szul": "Születési idő" }
+    "kulcs": { "nev": "Név", "szul": "Születési idő" },
+    "pattern": { "nev": "Név", "szul": "Születési idő" }
 }

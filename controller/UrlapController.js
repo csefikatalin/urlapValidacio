@@ -1,5 +1,5 @@
 import UrlapModel from "../model/UrlapModel.js";
-import UrlapView from "../view/UrlapView.js";
+import UrlapView from "../view/urlap/UrlapView.js";
 
 class UrlapController {
     #asszinkron;
@@ -7,11 +7,9 @@ class UrlapController {
     constructor() {
         let adatVegpont = "http://localhost:3000/adat";
         const urlapModel = new UrlapModel();
-        console.log(urlapModel.kulcs);
-        console.log(urlapModel.kulcs);
+      
         const urlapView = new UrlapView(
-            urlapModel.kulcs,
-            urlapModel.tipus,
+            urlapModel.adatLeiras,          
             $(".urlap")
         );
         /* this.#asszinkron = new Asszinkron();
