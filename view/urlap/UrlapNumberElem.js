@@ -1,4 +1,4 @@
-class UrlapTextElem {
+class UrlapNumberElem {
     #leiras = {};
     #kulcs;
     #valid;
@@ -9,13 +9,15 @@ class UrlapTextElem {
         this.#leiras = leiras;
         this.#value = "";
         this.formElem = szuloElem;
-        this.urlapTextElem();
+        this.urlapNumberElem();
         console.log(this.inputElem);
         this.inputElem.on("keyup", (event) => {
             this.#value = this.inputElem.val();
-            let patternString = this.#leiras.pattern;
-            let pattern = new RegExp(patternString);
-            if (pattern.test(this.#value)) {
+            console.log(this.#value);
+            if (
+                this.#value < this.#leiras.pattern.max &&
+                this.#value > this.#leiras.pattern.min
+            ) {console.log("igaz")
                 this.validElem.removeClass("valid-visible");
                 this.invalidElem.addClass("invalid-visible");
                 this.validElem.html("OK");
@@ -43,16 +45,19 @@ class UrlapTextElem {
         }
         return this.#valid;
     }
-    urlapTextElem() {
+    urlapNumberElem() {
         let txt = `<div id="${this.#kulcs}blokk" class="mb-3 mt-3">
                         <label for="${this.#kulcs}" class="form-label">${
             this.#leiras.megjelenes
         }</label>
                         <input type="${this.#leiras.tipus}" 
-                               id="${this.#kulcs}" 
-                               placeholder="${this.#leiras.placeholder}" 
-                               name="${this.#kulcs}" 
-                              
+                               id="${
+                                   this.#kulcs
+                               }"                               
+                               name="${this.#kulcs}"
+                               min="${this.#leiras.pattern.min}" max="${
+            this.#leiras.pattern.max
+        }"
                                class="form-control" >
                         <div class="valid">valid</div>
                         <div class="invalid">  invalid</div>
@@ -63,16 +68,12 @@ class UrlapTextElem {
             "required",
             this.#leiras.required ? "required" : null
         );
-
-        this.validElem = this.formElem
-            .children("div:last-child")
-            .children(".valid");
-        this.invalidElem = this.formElem
-            .children("div:last-child")
-            .children(".invalid");
+        console.log(this.inputElem);
+        this.validElem = this.formElem.children("div:last-child").children(".valid");
+        this.invalidElem = this.formElem.children("div:last-child").children(".invalid");
 
         this.invalidElem.addClass("invalid-visible");
         this.validElem.addClass("valid-visible");
     }
 }
-export default UrlapTextElem;
+export default UrlapNumberElem;
