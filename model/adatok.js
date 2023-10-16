@@ -13,6 +13,7 @@ export const adatLeiras = {
         placeholder: "Valaki Vagyok",
         pattern: "[A-Za-z]{3}",
         szoveg: "Legalább 3 betű, a névnek nagybetűvel kell kezdődnie!",
+        required: true,
     },
     szul: {
         megjelenes: "Születési idő",

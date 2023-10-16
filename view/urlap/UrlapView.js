@@ -1,25 +1,48 @@
+import UrlapTextElem from "./UrlapTextElem.js";
 class UrlapView {
     #adatLeiras = {};
-
+    #inputElemek = [];
+    #valid;
+    #urlapAdat = {};
     constructor(adatLeiras, szuloElem) {
         this.#adatLeiras = adatLeiras;
-
+        this.#inputElemek = [];
+        this.#valid = true;
         this.szuloElem = szuloElem;
         console.log(this.szuloElem);
         szuloElem.append("<form class=''>");
         this.formElem = this.szuloElem.children("form");
         this.htmlOsszallit();
+        this.submitElem = $("#submit");
+        this.submitElem.on("click", (event) => {
+            event.preventDefault();
+            this.#valid = true;
+            this.#inputElemek.forEach((element) => {
+                this.#valid = this.#valid && element.valid;
+            });
+            console.log(this.#valid);
+            if (this.#valid) {
+                this.#adatGyujt();
+            }
+        });
+    }
+    #adatGyujt() {
+        this.#inputElemek.forEach((element) => {
+            this.#urlapAdat[element.kulcs] = element.value;
+        });
+        console.log(this.#urlapAdat);
     }
     htmlOsszallit() {
         for (const key in this.#adatLeiras) {
-            console.log(
-                key,
-                this.#adatLeiras[key].tipus,
-                this.#adatLeiras[key].megjelenes
-            );
             switch (this.#adatLeiras[key].tipus) {
                 case "text":
-                    this.urlapElem(this.#adatLeiras[key], key);
+                    this.#inputElemek.push(
+                        new UrlapTextElem(
+                            this.#adatLeiras[key],
+                            key,
+                            this.formElem
+                        )
+                    );
                     break;
                 case "number":
                     this.urlapNumberElem(this.#adatLeiras[key], key);
@@ -28,17 +51,9 @@ class UrlapView {
                 // code block
             }
         }
-        this.formElem.append("<input type='submit' value='OK'>");
+        this.formElem.append("<input type='submit' id='submit' value='OK'>");
     }
-    urlapElem(leiras, kulcs) {
-        let txt = `<div id="${kulcs}blokk" class="mb-3 mt-3">
-                    <label for="${kulcs}" class="form-label">${leiras.megjelenes}</label>
-                    <input type="${leiras.tipus}" id="${kulcs}" placeholder="${leiras.placeholder}" name="${kulcs}" class="form-control" pattern="${leiras.pattern}">
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback"></div>
-                </div>`;
-        this.formElem.append(txt);
-    }
+
     urlapNumberElem(leiras, kulcs) {
         let txt = `<div id="${kulcs}blokk" class="mb-3 mt-3">
                     <label for="${kulcs}" class="form-label">${leiras.megjelenes}</label>
