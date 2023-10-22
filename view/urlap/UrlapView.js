@@ -1,5 +1,6 @@
 import UrlapTextElem from "./UrlapTextElem.js";
 import UrlapNumberElem from "./UrlapNumberElem.js";
+import UrlapDateElem from "./UrlapDateElem.js";
 class UrlapView {
     #adatLeiras = {};
     #inputElemek = [];
@@ -54,6 +55,15 @@ class UrlapView {
                         )
                     );
                     break;
+                    case "date":
+                        this.#inputElemek.push(
+                            new UrlapDateElem(
+                                this.#adatLeiras[key],
+                                key,
+                                this.formElem
+                            )
+                        );
+                        break;
                 default:
                 // code block
             }
