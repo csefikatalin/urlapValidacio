@@ -11,7 +11,7 @@ class UrlapView {
         this.#inputElemek = [];
         this.#valid = true;
         this.szuloElem = szuloElem;
-        console.log(this.szuloElem);
+     
         szuloElem.append("<form class=''>");
         this.formElem = this.szuloElem.children("form");
         this.htmlOsszallit();

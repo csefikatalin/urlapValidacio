@@ -1,4 +1,6 @@
-class Asszinkron {
+
+// https://github.com/axios/axios
+class DataService {
     #list = [];
     constructor() {}
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -50,5 +52,34 @@ class Asszinkron {
             callback(data);
         });
     }
+    getAxiosData(url, callback){
+        axios.get(url)
+        .then(function (response) {
+          // handle success
+          console.log(response);
+          console.log(response.data);
+          console.log(response.status);
+          console.log(response.statusText);
+          console.log(response.headers);
+          console.log(response.config);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+        });
+
+    }
+    postAxiosData(url, data, callback){
+        axios.post(url, data)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
 }
-export default Asszinkron;
+export default DataService;

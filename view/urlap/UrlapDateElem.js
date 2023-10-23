@@ -14,7 +14,7 @@ class UrlapDateElem {
         this.#value = "";
         this.formElem = szuloElem;
         this.urlapNumberElem();
-        console.log(this.inputElem);
+
         this.inputElem.on("keyup", (event) => {
             this.#value = this.inputElem.val();
             console.log(this.#value);
@@ -22,7 +22,7 @@ class UrlapDateElem {
                 this.#value < this.maxev &&
                 this.#value > this.minev
             ) {
-                console.log("igaz");
+              
                 this.validElem.removeClass("valid-visible");
                 this.invalidElem.addClass("invalid-visible");
                 this.validElem.html("OK");
@@ -72,7 +72,7 @@ class UrlapDateElem {
             "required",
             this.#leiras.required ? "required" : null
         );
-        console.log(this.inputElem);
+       
         this.validElem = this.formElem
             .children("div:last-child")
             .children(".valid");

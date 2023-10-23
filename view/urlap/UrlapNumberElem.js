@@ -10,14 +10,14 @@ class UrlapNumberElem {
         this.#value = "";
         this.formElem = szuloElem;
         this.urlapNumberElem();
-        console.log(this.inputElem);
+
         this.inputElem.on("keyup", (event) => {
             this.#value = this.inputElem.val();
             console.log(this.#value);
             if (
                 this.#value < this.#leiras.pattern.max &&
                 this.#value > this.#leiras.pattern.min
-            ) {console.log("igaz")
+            ) {
                 this.validElem.removeClass("valid-visible");
                 this.invalidElem.addClass("invalid-visible");
                 this.validElem.html("OK");

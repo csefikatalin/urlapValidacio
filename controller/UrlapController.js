@@ -1,21 +1,22 @@
 import UrlapModel from "../model/UrlapModel.js";
 import UrlapView from "../view/urlap/UrlapView.js";
-import Asszinkron from "../model/Asszinkron.js";
+import DataService from "../model/DataService.js";
 
 class UrlapController {
-    #asszinkron;
+    #dataService;
    
     constructor() {
        
         this.urlap()
-        /* this.#asszinkron = new Asszinkron();
-        this.#asszinkron.getData(adatVegpont, feldolgoz); */
+        /* this.#dataService = new DataService();
+        this.#dataService.getData(adatVegpont, feldolgoz); */
         this.asszinkronAdatok();
     }
     asszinkronAdatok() {
         let adatVegpont = "http://localhost:3000/adat";
-        this.#asszinkron = new Asszinkron();
-        this.#asszinkron.getData(adatVegpont, this.feldolgoz);
+        this.#dataService = new DataService();
+        //this.#asszinkron.getData(adatVegpont, this.feldolgoz);
+        this.#dataService.getAxiosData(adatVegpont, this.feldolgoz);
     }
     urlap() {
         const urlapModel = new UrlapModel();

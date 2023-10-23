@@ -10,7 +10,7 @@ class UrlapTextElem {
         this.#value = "";
         this.formElem = szuloElem;
         this.urlapTextElem();
-        console.log(this.inputElem);
+    
         this.inputElem.on("keyup", (event) => {
             this.#value = this.inputElem.val();
             let patternString = this.#leiras.pattern;
